@@ -1,4 +1,4 @@
-# F5-TTS: A Fairytaler that Fakes Fluent and Faithful Speech with Flow Matching
+# TTS2: Test-Time Scaling for Flow-Based Text-to-Speech via Multi-stage Reward Modeling on Sub-Terminal Representations
 
 [![python](https://img.shields.io/badge/Python-3.10-brightgreen)](https://github.com/SWivid/F5-TTS)
 [![arXiv](https://img.shields.io/badge/arXiv-2410.06885-b31b1b.svg?logo=arXiv)](https://arxiv.org/abs/2410.06885)
@@ -15,12 +15,6 @@
 **E2 TTS**: Flat-UNet Transformer, closest reproduction from [paper](https://arxiv.org/abs/2406.18009).
 
 **Sway Sampling**: Inference-time flow step sampling strategy, greatly improves performance
-
-### Thanks to all the contributors !
-
-## News
-- **2025/03/12**: 🔥 F5-TTS v1 base model with better training and inference performance. [Few demo](https://swivid.github.io/F5-TTS_updates).
-- **2024/10/08**: F5-TTS & E2 TTS base models on [🤗 Hugging Face](https://huggingface.co/SWivid/F5-TTS), [🤖 Model Scope](https://www.modelscope.cn/models/SWivid/F5-TTS_Emilia-ZH-EN), [🟣 Wisemodel](https://wisemodel.cn/models/SJTU_X-LANCE/F5-TTS_Emilia-ZH-EN).
 
 ## Installation
 
@@ -115,108 +109,6 @@ docker container run --rm -it --gpus=all --mount 'type=volume,source=f5-tts,targ
 docker container run --rm -it --gpus=all --mount 'type=volume,source=f5-tts,target=/root/.cache/huggingface/hub/' -p 7860:7860 ghcr.io/swivid/f5-tts:main f5-tts_infer-gradio --host 0.0.0.0
 ```
 
-### Runtime
-
-Deployment solution with Triton and TensorRT-LLM.
-
-#### Benchmark Results
-Decoding on a single L20 GPU, using 26 different prompt_audio & target_text pairs, 16 NFE.
-
-| Model               | Concurrency    | Avg Latency | RTF    | Mode            |
-|---------------------|----------------|-------------|--------|-----------------|
-| F5-TTS Base (Vocos) | 2              | 253 ms      | 0.0394 | Client-Server   |
-| F5-TTS Base (Vocos) | 1 (Batch_size) | -           | 0.0402 | Offline TRT-LLM |
-| F5-TTS Base (Vocos) | 1 (Batch_size) | -           | 0.1467 | Offline Pytorch |
-
-See [detailed instructions](src/f5_tts/runtime/triton_trtllm/README.md) for more information.
-
-
-## Inference
-
-- In order to achieve desired performance, take a moment to read [detailed guidance](src/f5_tts/infer).
-- By properly searching the keywords of problem encountered, [issues](https://github.com/SWivid/F5-TTS/issues?q=is%3Aissue) are very helpful.
-
-### 1. Gradio App
-
-Currently supported features:
-
-- Basic TTS with Chunk Inference
-- Multi-Style / Multi-Speaker Generation
-- Voice Chat powered by Qwen2.5-3B-Instruct
-- [Custom inference with more language support](src/f5_tts/infer/SHARED.md)
-
-```bash
-# Launch a Gradio app (web interface)
-f5-tts_infer-gradio
-
-# Specify the port/host
-f5-tts_infer-gradio --port 7860 --host 0.0.0.0
-
-# Launch a share link
-f5-tts_infer-gradio --share
-```
-
-<details>
-<summary>NVIDIA device docker compose file example</summary>
-
-```yaml
-services:
-  f5-tts:
-    image: ghcr.io/swivid/f5-tts:main
-    ports:
-      - "7860:7860"
-    environment:
-      GRADIO_SERVER_PORT: 7860
-    entrypoint: ["f5-tts_infer-gradio", "--port", "7860", "--host", "0.0.0.0"]
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [gpu]
-
-volumes:
-  f5-tts:
-    driver: local
-```
-
-</details>
-
-### 2. CLI Inference
-
-```bash
-# Run with flags
-# Leave --ref_text "" will have ASR model transcribe (extra GPU memory usage)
-f5-tts_infer-cli --model F5TTS_v1_Base \
---ref_audio "provide_prompt_wav_path_here.wav" \
---ref_text "The content, subtitle or transcription of reference audio." \
---gen_text "Some text you want TTS model generate for you."
-
-# Run with default setting. src/f5_tts/infer/examples/basic/basic.toml
-f5-tts_infer-cli
-# Or with your own .toml file
-f5-tts_infer-cli -c custom.toml
-
-# Multi voice. See src/f5_tts/infer/README.md
-f5-tts_infer-cli -c src/f5_tts/infer/examples/multi/story.toml
-```
-
-
-## Training
-
-### 1. With Hugging Face Accelerate
-
-Refer to [training & finetuning guidance](src/f5_tts/train) for best practice.
-
-### 2. With Gradio App
-
-```bash
-# Quick start with Gradio web interface
-f5-tts_finetune-gradio
-```
-
-Read [training & finetuning guidance](src/f5_tts/train) for more instructions.
 
 
 ## [Evaluation](src/f5_tts/eval)
@@ -235,22 +127,6 @@ bash mrm_experiments/run_mrm_fixed_t2_fanout.sh
 bash mrm_experiments/run_mrm_fixed_t1_fanout.sh
 ```
 
-## Development
-
-Use pre-commit to ensure code quality (will run linters and formatters automatically):
-
-```bash
-pip install pre-commit
-pre-commit install
-```
-
-When making a pull request, before each commit, run: 
-
-```bash
-pre-commit run --all-files
-```
-
-Note: Some model components have linting exceptions for E722 to accommodate tensor notation.
 
 
 ## Acknowledgements
@@ -269,7 +145,7 @@ Note: Some model components have linting exceptions for E722 to accommodate tens
 
 ## Citation
 
-This project is built upon the original **F5-TTS** codebase. If you use our work or the original F5-TTS in your research, please cite the original F5-TTS paper:
+This project is built upon the original **F5-TTS** and **E2 TTS** codebases and architectures. If you use our work, please cite the original papers:
 ```
 @article{chen-etal-2024-f5tts,
       title={F5-TTS: A Fairytaler that Fakes Fluent and Faithful Speech with Flow Matching}, 
@@ -277,7 +153,14 @@ This project is built upon the original **F5-TTS** codebase. If you use our work
       journal={arXiv preprint arXiv:2410.06885},
       year={2024},
 }
+
+@article{e2tts-2024,
+      title={E2 TTS: Embarrassingly Easy Fully Non-Autoregressive Zero-Shot TTS},
+      author={Sheng, Tu and others},
+      journal={arXiv preprint arXiv:2406.18009},
+      year={2024}
+}
 ```
 ## License
 
-Our code is released under MIT License. The pre-trained models are licensed under the CC-BY-NC license due to the training data Emilia, which is an in-the-wild dataset. Sorry for any inconvenience this may cause.
+Our code is released under MIT License. The pre-trained models are licensed under the CC-BY-NC license due to the training data Emilia, which is an in-the-wild dataset.
