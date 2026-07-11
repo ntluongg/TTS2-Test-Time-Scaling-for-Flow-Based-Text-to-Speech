@@ -891,6 +891,8 @@ class CFM_SDE(CFM):
                 t1=mrm_t1,
                 t2=mrm_t2,
             )
+        elif search_type is None or search_type == "none":
+            self.search_strategy = None
         else:
             raise ValueError
 
@@ -977,6 +979,25 @@ class CFM_SDE(CFM):
         t_inter=0.1,
         edit_mask=None,
     ):
+        if getattr(self, "search_strategy", None) is None:
+            return super().sample(
+                cond=cond,
+                text=text,
+                duration=duration,
+                lens=lens,
+                steps=steps,
+                cfg_strength=cfg_strength,
+                sway_sampling_coef=sway_sampling_coef,
+                seed=seed,
+                max_duration=max_duration,
+                vocoder=vocoder,
+                use_epss=use_epss,
+                no_ref_audio=no_ref_audio,
+                duplicate_test=duplicate_test,
+                t_inter=t_inter,
+                edit_mask=edit_mask,
+            )
+
         self.eval()
         # print(f"Text: {text}")
         joined_text = ''.join(c for sub in text for c in sub)

@@ -244,6 +244,11 @@ def load_model(
     ode_method=ode_method,
     use_ema=True,
     device=device,
+    search_type=None,
+    search_n=8,
+    mrm_t1=None,
+    mrm_t2=None,
+    reward_url=None,
 ):
     if vocab_file == "":
         vocab_file = str(files("f5_tts").joinpath("infer/examples/vocab.txt"))
@@ -268,6 +273,11 @@ def load_model(
             method=ode_method,
         ),
         vocab_char_map=vocab_char_map,
+        search_type=search_type,
+        search_N=search_n,
+        mrm_t1=mrm_t1,
+        mrm_t2=mrm_t2,
+        reward_url=reward_url,
     ).to(device)
 
     dtype = torch.float32 if mel_spec_type == "bigvgan" else None

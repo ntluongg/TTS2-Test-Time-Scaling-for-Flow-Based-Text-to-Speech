@@ -108,13 +108,14 @@ CUDA_VISIBLE_DEVICES=0 REWARD_DEVICE=cuda python -m uvicorn paper_experiments.re
 
 2. **Run inference for one sample (in terminal 2)**:
 ```bash
-CUDA_VISIBLE_DEVICES=0 python paper_experiments/eval_infer_batch_mrm_search.py \
-  -s 2 -n F5TTS_v1_Base -c 1250000 -t seedtts_test_zh -nfe 32 \
-  --search-type mrm --search-n 8 --mrm-t1 0.35 --mrm-t2 0.8 \
-  --reward-url http://127.0.0.1:8000/infer \
-  --max-utterances 1 \
-  --results-tag demo_mrm
+CUDA_VISIBLE_DEVICES=0 python src/f5_tts/infer/infer_cli.py \
+  --model F5TTS_v1_Base \
+  --gen_text "This is a single sample test for the MRM search method." \
+  --search_type mrm --search_n 8 --mrm_t1 0.35 --mrm_t2 0.8 \
+  --reward_url http://127.0.0.1:8000/infer
 ```
+
+> **Note on GPU Usage:** Both the reward server and the generation script are set to run on the same GPU (`CUDA_VISIBLE_DEVICES=0`). If you have multiple GPUs and want to run the reward server on a separate GPU to free up VRAM, you can change `CUDA_VISIBLE_DEVICES=1` when starting the reward server.
 
 ## Replicating Experiments
 

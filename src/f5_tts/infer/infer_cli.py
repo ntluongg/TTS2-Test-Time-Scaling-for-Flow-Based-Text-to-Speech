@@ -174,6 +174,11 @@ parser.add_argument(
     type=str,
     help="Specify the device to run on",
 )
+parser.add_argument("--search_type", type=str, help="Search type for CFM sample (e.g. mrm, bon)")
+parser.add_argument("--search_n", type=int, help="Number of search candidates")
+parser.add_argument("--mrm_t1", type=float, help="MRM t1 threshold")
+parser.add_argument("--mrm_t2", type=float, help="MRM t2 threshold")
+parser.add_argument("--reward_url", type=str, help="URL for reward server")
 args = parser.parse_args()
 
 
@@ -221,6 +226,12 @@ sway_sampling_coef = args.sway_sampling_coef or config.get("sway_sampling_coef",
 speed = args.speed or config.get("speed", speed)
 fix_duration = args.fix_duration or config.get("fix_duration", fix_duration)
 device = args.device or config.get("device", device)
+
+search_type = args.search_type or config.get("search_type", None)
+search_n = args.search_n or config.get("search_n", 8)
+mrm_t1 = args.mrm_t1 or config.get("mrm_t1", None)
+mrm_t2 = args.mrm_t2 or config.get("mrm_t2", None)
+reward_url = args.reward_url or config.get("reward_url", None)
 
 
 # patches for pip pkg user
@@ -297,7 +308,17 @@ if vocab_file.startswith("hf://"):
 
 print(f"Using {model}...")
 ema_model = load_model(
-    model_cls, model_arc, ckpt_file, mel_spec_type=vocoder_name, vocab_file=vocab_file, device=device
+    model_cls,
+    model_arc,
+    ckpt_file,
+    mel_spec_type=vocoder_name,
+    vocab_file=vocab_file,
+    device=device,
+    search_type=search_type,
+    search_n=search_n,
+    mrm_t1=mrm_t1,
+    mrm_t2=mrm_t2,
+    reward_url=reward_url,
 )
 
 

@@ -1,4 +1,7 @@
 import os
+import sys
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 import torch
 import torchaudio
 from fastapi import FastAPI
@@ -22,8 +25,6 @@ if not hasattr(torchaudio, 'set_audio_backend'):
     torchaudio.set_audio_backend = lambda *args, **kwargs: None
 
 import sys
-sys.path.insert(0, "/home/voice/data/voice-models/F5-TTS/utmosv1/s3prl-s3prl-ec8064b")
-
 from types import ModuleType
 if not hasattr(torchaudio, 'sox_effects'):
     fake_sox = ModuleType('torchaudio.sox_effects')
@@ -41,9 +42,10 @@ _original_load = torch.hub.load_state_dict_from_url
 @wraps(_original_load)
 def _patched_load(url, map_location=None, *args, **kwargs):
     if "wavlm_large.pt" in url:
-        local_path = "/home/voice/data/voice-models/F5-TTS/checkpoints/UniSpeech/wavlm_large_finetune.pth"
-        return torch.load(local_path, map_location=map_location)
-    raise RuntimeError(f"Offline: cannot download {url}")
+        local_path = os.path.join(ROOT_DIR, "ckpts", "wavlm_large_finetune.pth")
+        if os.path.exists(local_path):
+            return torch.load(local_path, map_location=map_location)
+    return _original_load(url, map_location=map_location, *args, **kwargs)
 
 torch.hub.load_state_dict_from_url = _patched_load
 
@@ -65,8 +67,15 @@ class RewardPipeline:
             torch.backends.cudnn.benchmark = True
 
         # ---------------- Vocoder ----------------
-        self.vocoder = load_vocoder(vocoder_name = "vocos", is_local= True, local_path="/home/voice/data/voice-models/F5-TTS/checkpoints/vocos-mel-24khz", device=device)
-        self.vocoder = self.vocoder.eval().to(self.device)
+        self.vocoder_name = os.environ.get("REWARD_VOCODER", "vocos").lower()
+        if self.vocoder_name not in ["vocos", "bigvgan"]:
+            raise ValueError(f"Unsupported REWARD_VOCODER={self.vocoder_name}")
+
+        self.vocoder = load_vocoder(
+            vocoder_name=self.vocoder_name,
+            is_local=False,
+            local_path="",
+            device=device,)
 
         self.resampler = torchaudio.transforms.Resample(
             orig_freq=24000,
@@ -75,9 +84,8 @@ class RewardPipeline:
 
         # ---------------- UTMOS ----------------
         self.utmos = torch.hub.load(
-            "/home/voice/data/voice-models/F5-TTS/utmosv1/tarepan-SpeechMOS-ed25eac",
+            "tarepan/SpeechMOS:v1.2.0",
             "utmos22_strong",
-            source='local',     
             trust_repo=True
         )
         self.utmos = self.utmos.eval().to(self.device)
@@ -96,7 +104,7 @@ class RewardPipeline:
 
 
         self.sim_model = None
-        self.wavlm_ckpt_path = "/home/voice/data/voice-models/F5-TTS/checkpoints/UniSpeech/wavlm_large_finetune.pth"
+        self.wavlm_ckpt_path = os.path.join(ROOT_DIR, "ckpts", "wavlm_large_finetune.pth")
         self.ref_embedding_cache = {}
         self.max_ref_cache_size = 256
 
