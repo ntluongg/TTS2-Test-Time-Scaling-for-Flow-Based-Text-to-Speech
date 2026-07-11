@@ -1,5 +1,9 @@
 # TTS2: Test-Time Scaling for Flow-Based Text-to-Speech via Multi-stage Reward Modeling on Sub-Terminal Representations
 
+## 🌟 Demo for Reviewers
+
+To view the audio generation results and comparisons, please follow the instructions in [demo/README.md](demo/README.md).
+
 ## Installation
 
 ### Create a separate environment if needed

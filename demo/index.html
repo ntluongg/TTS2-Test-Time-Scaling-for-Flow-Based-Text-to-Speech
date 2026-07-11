@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TTS Model Evaluation Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --surface-color: #1e293b;
+            --surface-hover: #334155;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-primary: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.5);
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-image:
+                radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.15), transparent 25%);
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #60a5fa, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        h2 {
+            font-size: 2rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            font-weight: 600;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+        }
+
+        tr {
+            transition: background-color 0.2s ease;
+        }
+
+        tr:hover td {
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+
+        audio {
+            width: 200px;
+            height: 36px;
+            outline: none;
+            border-radius: 20px;
+            opacity: 0.9;
+            transition: opacity 0.2s;
+        }
+
+        audio:hover {
+            opacity: 1;
+        }
+
+        audio::-webkit-media-controls-panel {
+            background-color: var(--surface-hover);
+            color: #fff;
+        }
+
+        audio::-webkit-media-controls-current-time-display,
+        audio::-webkit-media-controls-time-remaining-display {
+            color: #fff;
+        }
+
+        .badge {
+            background-color: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 5px;
+        }
+
+        .metric-val {
+            font-family: monospace;
+            color: #a78bfa;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Zero-Shot TTS Evaluation Demo</h1>
+            <p>Comparing F5-TTS vs TTS<sup>2</sup> (ours) on Expressive Speech Generation</p>
+        </header>
+
+        <section class="card">
+            <h2>Abstract</h2>
+            <p>
+                While training-time scaling has revolutionized generative models, inference-time compute scaling remains
+                largely unexplored in speech synthesis. In this work, we investigate methods to effectively utilize
+                computation during inference to improve the performance of non-autoregressive Text-to-Speech (TTS)
+                systems, specifically those based on Conditional Flow Matching (CFM). By analyzing CFM synthesis
+                behavior, we identify distinct performance plateaus during the denoising process. To overcome these
+                limitations, we propose TTS<sup>2</sup> - a multi-stage, test-time compute framework that optimizes TTS
+                quality. By combining Ordinary Differential Equation (ODE) and Stochastic Differential Equation (SDE)
+                generation dynamics with stochastic search and specialized verifiers, our approach enables guided
+                trajectory optimization for timbre consistency, content accuracy, and audio fidelity. To the best of our
+                knowledge, this work is the first to formalize and study test-time scaling for non-autoregressive speech
+                synthesis.
+            </p>
+        </section>
+
+        <section class="card">
+            <h2>Model Overview</h2>
+            <figure style="margin: 0; text-align: center;">
+                <img src="TTS2_method.png" alt="Overview of TTS2"
+                    style="max-width: 100%; border-radius: 8px; margin-bottom: 15px;">
+                <figcaption
+                    style="color: var(--text-secondary); font-size: 0.95rem; font-style: italic; max-width: 800px; margin: 0 auto; line-height: 1.5;">
+                    Overview of TTS<sup>2</sup> (ours). Compute is aligned across the flow via a branching SDE search
+                    space. Trajectories begin with an unguided warm-up, refine speaker features through an SMC search,
+                    and converge using an ODE Best-of-N selection to finalize acoustic details.
+                </figcaption>
+            </figure>
+        </section>
+
+        <section>
+            <h2>Zero-Shot Generation</h2>
+            <p>Compare the generated audio between F5-TTS and TTS<sup>2</sup> (ours) using the reference prompt. Both
+                models are evaluated at NFE = 256.</p>
+
+            <div class="card table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Reference & Gen Text</th>
+                            <th>Reference Audio</th>
+                            <th>F5-TTS</th>
+                            <th>TTS<sup>2</sup> (ours)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="demo-table-body">
+                        <tr>
+                            <td colspan="4" style="text-align: center;">Loading data...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch('audio/web_demo_data.json')
+                .then(response => response.json())
+                .then(data => {
+                    const tbody = document.getElementById('demo-table-body');
+                    tbody.innerHTML = '';
+
+                    data.forEach(item => {
+                        const tr = document.createElement('tr');
+
+                        // Text
+                        const refText = item.transcript?.ref_text || '';
+                        const genText = item.transcript?.gen_text || '';
+
+                        // Audio Paths (from the merged folder)
+                        const refAudio = `audio/${item.audio?.reference}`;
+                        const modelAAudio = `audio/${item.audio?.model_a}`;
+                        const modelBAudio = `audio/${item.audio?.model_b}`;
+
+                        tr.innerHTML = `
+                            <td>
+                                <div style="margin-bottom: 8px;"><strong>Ref:</strong> <span style="color: var(--text-secondary); font-size: 0.9em;">${refText}</span></div>
+                                <div><strong>Gen:</strong> <span style="color: #e2e8f0;">${genText}</span></div>
+                            </td>
+                            <td>
+                                <audio controls src="${refAudio}"></audio>
+                            </td>
+                            <td>
+                                <audio controls src="${modelBAudio}"></audio>
+                            </td>
+                            <td>
+                                <audio controls src="${modelAAudio}"></audio>
+                            </td>
+                        `;
+                        tbody.appendChild(tr);
+                    });
+                })
+                .catch(err => {
+                    console.error("Error loading JSON data:", err);
+                    document.getElementById('demo-table-body').innerHTML = `<tr><td colspan="4" style="color: red; text-align: center;">Failed to load demo data. Make sure you are serving this via a local server (e.g., python -m http.server).</td></tr>`;
+                });
+        });
+    </script>
+</body>
+
+</html>

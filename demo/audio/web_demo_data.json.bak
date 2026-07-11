@@ -1,0 +1,614 @@
+[
+  {
+    "id": "4507-16021-0011",
+    "metrics": {
+      "diff": 0.1743,
+      "sim_a": 0.7748,
+      "sim_b": 0.6005
+    },
+    "transcript": {
+      "ref_text": "Since when has malady banished medicine?",
+      "gen_text": "Why should one not explore everything, and study everything?"
+    },
+    "audio": {
+      "model_a": "A/4507-16021-0011.wav",
+      "model_b": "B/4507-16021-0011.wav",
+      "reference": "ref/4507-16021-0015.flac"
+    }
+  },
+  {
+    "id": "5683-32866-0027",
+    "metrics": {
+      "diff": 0.8324,
+      "utmos_a": 3.7557,
+      "utmos_b": 2.9234
+    },
+    "transcript": {
+      "ref_text": "Bracton's a very good fellow, I can assure you.",
+      "gen_text": "A cold, bright moon was shining with clear sharp lights and shadows."
+    },
+    "audio": {
+      "model_a": "A/5683-32866-0027.wav",
+      "model_b": "B/5683-32866-0027.wav",
+      "reference": "ref/5683-32866-0008.flac"
+    }
+  },
+  {
+    "id": "5142-33396-0051",
+    "metrics": {
+      "diff": 0.1542,
+      "sim_a": 0.6307,
+      "sim_b": 0.4765
+    },
+    "transcript": {
+      "ref_text": "Thirty men, one after another, raised their horns and said:",
+      "gen_text": "And with it I leave you a name, Sif the Friendly. I shall hope to drink with you sometime in Valhalla."
+    },
+    "audio": {
+      "model_a": "A/5142-33396-0051.wav",
+      "model_b": "B/5142-33396-0051.wav",
+      "reference": "ref/5142-33396-0014.flac"
+    }
+  },
+  {
+    "id": "5142-33396-0059",
+    "metrics": {
+      "diff": 0.1459,
+      "sim_a": 0.5904,
+      "sim_b": 0.4445
+    },
+    "transcript": {
+      "ref_text": "May you drink heart's ease from it for many years.",
+      "gen_text": "Yes. And with all your fingers it took you a year to catch me'. \"The king frowned more angrily."
+    },
+    "audio": {
+      "model_a": "A/5142-33396-0059.wav",
+      "model_b": "B/5142-33396-0059.wav",
+      "reference": "ref/5142-33396-0050.flac"
+    }
+  },
+  {
+    "id": "1580-141084-0034",
+    "metrics": {
+      "diff": 1.139,
+      "utmos_a": 3.7617,
+      "utmos_b": 2.6227
+    },
+    "transcript": {
+      "ref_text": "Holmes held it out on his open palm in the glare of the electric light.",
+      "gen_text": "Well, well, don't trouble to answer. Listen, and see that I do you no injustice."
+    },
+    "audio": {
+      "model_a": "A/1580-141084-0034.wav",
+      "model_b": "B/1580-141084-0034.wav",
+      "reference": "ref/1580-141083-0036.flac"
+    }
+  },
+  {
+    "id": "7021-85628-0016",
+    "metrics": {
+      "diff": 0.1296,
+      "sim_a": 0.7183,
+      "sim_b": 0.5888
+    },
+    "transcript": {
+      "ref_text": "No, my little son,\" she said.",
+      "gen_text": "That is a very fine cap you have,\" he said."
+    },
+    "audio": {
+      "model_a": "A/7021-85628-0016.wav",
+      "model_b": "B/7021-85628-0016.wav",
+      "reference": "ref/7021-85628-0026.flac"
+    }
+  },
+  {
+    "id": "1580-141083-0044",
+    "metrics": {
+      "diff": 0.1282,
+      "sim_a": 0.6489,
+      "sim_b": 0.5208
+    },
+    "transcript": {
+      "ref_text": "Why, Bannister, the servant. What's his game in the matter\"?",
+      "gen_text": "I dare not go so far as that. But, of the three, he is perhaps the least unlikely\"."
+    },
+    "audio": {
+      "model_a": "A/1580-141083-0044.wav",
+      "model_b": "B/1580-141083-0044.wav",
+      "reference": "ref/1580-141084-0014.flac"
+    }
+  },
+  {
+    "id": "1580-141083-0024",
+    "metrics": {
+      "diff": 0.7237,
+      "utmos_a": 4.1831,
+      "utmos_b": 3.4594
+    },
+    "transcript": {
+      "ref_text": "If mister Soames saw them, the game was up.",
+      "gen_text": "You left him in a chair, you say. Which chair\"? \"By the window there\"."
+    },
+    "audio": {
+      "model_a": "A/1580-141083-0024.wav",
+      "model_b": "B/1580-141083-0024.wav",
+      "reference": "ref/1580-141084-0050.flac"
+    }
+  },
+  {
+    "id": "4970-29095-0005",
+    "metrics": {
+      "diff": 0.1249,
+      "sim_a": 0.6232,
+      "sim_b": 0.4983
+    },
+    "transcript": {
+      "ref_text": "Where thee and thy family are known\"?",
+      "gen_text": "Thy ways greatly try me, Ruth, and all thy relations."
+    },
+    "audio": {
+      "model_a": "A/4970-29095-0005.wav",
+      "model_b": "B/4970-29095-0005.wav",
+      "reference": "ref/4970-29095-0014.flac"
+    }
+  },
+  {
+    "id": "1320-122617-0012",
+    "metrics": {
+      "diff": 0.1223,
+      "sim_a": 0.7553,
+      "sim_b": 0.633
+    },
+    "transcript": {
+      "ref_text": "Uncas cast his skin, and stepped forth in his own beautiful proportions.",
+      "gen_text": "Four or five of the latter only lingered about the door of the prison of Uncas, wary but close observers of the manner of their captive."
+    },
+    "audio": {
+      "model_a": "A/1320-122617-0012.wav",
+      "model_b": "B/1320-122617-0012.wav",
+      "reference": "ref/1320-122617-0041.flac"
+    }
+  },
+  {
+    "id": "5105-28240-0002",
+    "metrics": {
+      "diff": 0.1188,
+      "sim_a": 0.7521,
+      "sim_b": 0.6333
+    },
+    "transcript": {
+      "ref_text": "To all these inquiries, the count responded in the affirmative.",
+      "gen_text": "exclaimed Servadac, keeping his eye unmoved at his telescope."
+    },
+    "audio": {
+      "model_a": "A/5105-28240-0002.wav",
+      "model_b": "B/5105-28240-0002.wav",
+      "reference": "ref/5105-28240-0016.flac"
+    }
+  },
+  {
+    "id": "8555-284449-0008",
+    "metrics": {
+      "diff": 0.1188,
+      "sim_a": 0.6692,
+      "sim_b": 0.5504
+    },
+    "transcript": {
+      "ref_text": "The goat's warlike spirit was roused by this successful attack.",
+      "gen_text": "Then she gave Rosalie back her magic ring, thanking the kind Witch for all she had done for them."
+    },
+    "audio": {
+      "model_a": "A/8555-284449-0008.wav",
+      "model_b": "B/8555-284449-0008.wav",
+      "reference": "ref/8555-284447-0020.flac"
+    }
+  },
+  {
+    "id": "3570-5696-0010",
+    "metrics": {
+      "diff": 0.1179,
+      "sim_a": 0.794,
+      "sim_b": 0.6761
+    },
+    "transcript": {
+      "ref_text": "There is a more or less elaborate system of rank and grades.",
+      "gen_text": "An article may be useful and wasteful both, and its utility to the consumer may be made up of use and waste in the most varying proportions."
+    },
+    "audio": {
+      "model_a": "A/3570-5696-0010.wav",
+      "model_b": "B/3570-5696-0010.wav",
+      "reference": "ref/3570-5694-0012.flac"
+    }
+  },
+  {
+    "id": "7176-88083-0005",
+    "metrics": {
+      "diff": 0.1179,
+      "sim_a": 0.7007,
+      "sim_b": 0.5829
+    },
+    "transcript": {
+      "ref_text": "Straightway the hawk glided from his perch and darted after him.",
+      "gen_text": "Once fairly a wing, however, he wheeled and made back hurriedly for his perch."
+    },
+    "audio": {
+      "model_a": "A/7176-88083-0005.wav",
+      "model_b": "B/7176-88083-0005.wav",
+      "reference": "ref/7176-88083-0016.flac"
+    }
+  },
+  {
+    "id": "4970-29093-0019",
+    "metrics": {
+      "diff": 0.1164,
+      "sim_a": 0.6994,
+      "sim_b": 0.583
+    },
+    "transcript": {
+      "ref_text": "You can begin by carrying a rod, and putting down the figures.",
+      "gen_text": "The night was spent in packing up and writing letters, for Philip would not take such an important step without informing his friends."
+    },
+    "audio": {
+      "model_a": "A/4970-29093-0019.wav",
+      "model_b": "B/4970-29093-0019.wav",
+      "reference": "ref/4970-29093-0015.flac"
+    }
+  },
+  {
+    "id": "7729-102255-0033",
+    "metrics": {
+      "diff": 0.1144,
+      "sim_a": 0.7698,
+      "sim_b": 0.6554
+    },
+    "transcript": {
+      "ref_text": "This was at the March election, eighteen fifty five.",
+      "gen_text": "As he had promised to protect the hotel, the reassured citizens began to laugh at their own fears."
+    },
+    "audio": {
+      "model_a": "A/7729-102255-0033.wav",
+      "model_b": "B/7729-102255-0033.wav",
+      "reference": "ref/7729-102255-0001.flac"
+    }
+  },
+  {
+    "id": "908-157963-0013",
+    "metrics": {
+      "diff": 0.1132,
+      "sim_a": 0.7915,
+      "sim_b": 0.6782
+    },
+    "transcript": {
+      "ref_text": "And fearest thou because I vanish and am seen no more.",
+      "gen_text": "And why it scatters its bright beauty thro the humid air."
+    },
+    "audio": {
+      "model_a": "A/908-157963-0013.wav",
+      "model_b": "B/908-157963-0013.wav",
+      "reference": "ref/908-157963-0018.flac"
+    }
+  },
+  {
+    "id": "61-70970-0011",
+    "metrics": {
+      "diff": 0.112,
+      "sim_a": 0.7581,
+      "sim_b": 0.646
+    },
+    "transcript": {
+      "ref_text": "And mine is Will Stuteley. Shall we be comrades\"?",
+      "gen_text": "As any in England, I would say,\" said Gamewell, proudly. \"That is, in his day."
+    },
+    "audio": {
+      "model_a": "A/61-70970-0011.wav",
+      "model_b": "B/61-70970-0011.wav",
+      "reference": "ref/61-70968-0039.flac"
+    }
+  },
+  {
+    "id": "672-122797-0072",
+    "metrics": {
+      "diff": 0.9058,
+      "utmos_a": 4.2878,
+      "utmos_b": 3.382
+    },
+    "transcript": {
+      "ref_text": "Out in the woods stood a nice little Fir Tree.",
+      "gen_text": "And the gardener's boy chopped the Tree into small pieces; there was a whole heap lying there."
+    },
+    "audio": {
+      "model_a": "A/672-122797-0072.wav",
+      "model_b": "B/672-122797-0072.wav",
+      "reference": "ref/672-122797-0000.flac"
+    }
+  },
+  {
+    "id": "2961-961-0015",
+    "metrics": {
+      "diff": 0.1016,
+      "sim_a": 0.707,
+      "sim_b": 0.6054
+    },
+    "transcript": {
+      "ref_text": "Some poems of Solon were recited by the boys.",
+      "gen_text": "Many laws exist among us which are the counterpart of yours as they were in the olden time."
+    },
+    "audio": {
+      "model_a": "A/2961-961-0015.wav",
+      "model_b": "B/2961-961-0015.wav",
+      "reference": "ref/2961-961-0005.flac"
+    }
+  },
+  {
+    "id": "3729-6852-0031",
+    "metrics": {
+      "diff": 1.4403,
+      "utmos_a": 3.6737,
+      "utmos_b": 2.2335
+    },
+    "transcript": {
+      "ref_text": "Is there not a meridian everywhere\"?",
+      "gen_text": "But how did she manage to render it so fashionable\"?"
+    },
+    "audio": {
+      "model_a": "A/3729-6852-0031.wav",
+      "model_b": "B/3729-6852-0031.wav",
+      "reference": "ref/3729-6852-0025.flac"
+    }
+  },
+  {
+    "id": "4507-16021-0048",
+    "metrics": {
+      "diff": 1.2648,
+      "utmos_a": 3.959,
+      "utmos_b": 2.6943
+    },
+    "transcript": {
+      "ref_text": "And you belong to that small class who are happy!",
+      "gen_text": "This without reckoning in the pains of the heart. And so it goes on."
+    },
+    "audio": {
+      "model_a": "A/4507-16021-0048.wav",
+      "model_b": "B/4507-16021-0048.wav",
+      "reference": "ref/4507-16021-0050.flac"
+    }
+  },
+  {
+    "id": "1580-141083-0012",
+    "metrics": {
+      "diff": 1.058,
+      "utmos_a": 3.8253,
+      "utmos_b": 2.7674
+    },
+    "transcript": {
+      "ref_text": "I really don't think he knew much about it, mister Holmes.",
+      "gen_text": "Not only this, but on the table I found a small ball of black dough or clay, with specks of something which looks like sawdust in it."
+    },
+    "audio": {
+      "model_a": "A/1580-141083-0012.wav",
+      "model_b": "B/1580-141083-0012.wav",
+      "reference": "ref/1580-141083-0050.flac"
+    }
+  },
+  {
+    "id": "1284-1180-0031",
+    "metrics": {
+      "diff": 0.8727,
+      "utmos_a": 4.2373,
+      "utmos_b": 3.3645
+    },
+    "transcript": {
+      "ref_text": "When they were outside, Unc simply latched the door and started up the path.",
+      "gen_text": "At the Emerald City, where our Princess Ozma lives, green is the popular color."
+    },
+    "audio": {
+      "model_a": "A/1284-1180-0031.wav",
+      "model_b": "B/1284-1180-0031.wav",
+      "reference": "ref/1284-1180-0004.flac"
+    }
+  },
+  {
+    "id": "1284-1181-0003",
+    "metrics": {
+      "diff": 0.8564,
+      "utmos_a": 4.0449,
+      "utmos_b": 3.1885
+    },
+    "transcript": {
+      "ref_text": "The head of the Patchwork Girl was the most curious part of her.",
+      "gen_text": "The hair was of brown yarn and hung down on her neck in several neat braids."
+    },
+    "audio": {
+      "model_a": "A/1284-1181-0003.wav",
+      "model_b": "B/1284-1181-0003.wav",
+      "reference": "ref/1284-1181-0002.flac"
+    }
+  },
+  {
+    "id": "5105-28240-0024",
+    "metrics": {
+      "diff": 0.8436,
+      "utmos_a": 4.1436,
+      "utmos_b": 3.3
+    },
+    "transcript": {
+      "ref_text": "Steam up and canvas spread, the schooner started eastwards.",
+      "gen_text": "Doubts now arose, and some discussion followed, whether or not it was desirable for Ben Zoof to accompany his master."
+    },
+    "audio": {
+      "model_a": "A/5105-28240-0024.wav",
+      "model_b": "B/5105-28240-0024.wav",
+      "reference": "ref/5105-28241-0003.flac"
+    }
+  },
+  {
+    "id": "1580-141084-0033",
+    "metrics": {
+      "diff": 0.817,
+      "utmos_a": 4.1692,
+      "utmos_b": 3.3522
+    },
+    "transcript": {
+      "ref_text": "One hardly likes to throw suspicion where there are no proofs\".",
+      "gen_text": "Come, come,\" said Holmes, kindly, \"it is human to err, and at least no one can accuse you of being a callous criminal."
+    },
+    "audio": {
+      "model_a": "A/1580-141084-0033.wav",
+      "model_b": "B/1580-141084-0033.wav",
+      "reference": "ref/1580-141083-0040.flac"
+    }
+  },
+  {
+    "id": "2300-131720-0024",
+    "metrics": {
+      "diff": 0.7929,
+      "utmos_a": 4.0929,
+      "utmos_b": 3.3
+    },
+    "transcript": {
+      "ref_text": "We had meters in which there were two bottles of liquid.",
+      "gen_text": "But the plant ran, and it was the first three wire station in this country\"."
+    },
+    "audio": {
+      "model_a": "A/2300-131720-0024.wav",
+      "model_b": "B/2300-131720-0024.wav",
+      "reference": "ref/2300-131720-0041.flac"
+    }
+  },
+  {
+    "id": "5683-32879-0018",
+    "metrics": {
+      "diff": 0.7908,
+      "utmos_a": 3.7762,
+      "utmos_b": 2.9853
+    },
+    "transcript": {
+      "ref_text": "All the furniture belonged to other times.",
+      "gen_text": "It is an antipathy - an antipathy I cannot get over, dear Dorcas; you may think it a madness, but don't blame me."
+    },
+    "audio": {
+      "model_a": "A/5683-32879-0018.wav",
+      "model_b": "B/5683-32879-0018.wav",
+      "reference": "ref/5683-32866-0023.flac"
+    }
+  },
+  {
+    "id": "237-126133-0003",
+    "metrics": {
+      "diff": 0.7849,
+      "utmos_a": 4.2794,
+      "utmos_b": 3.4946
+    },
+    "transcript": {
+      "ref_text": "she asked impulsively, \"I didn't believe you could persuade her, father\".",
+      "gen_text": "Somehow, of all the days when the home feeling was the strongest, this day it seemed as if she could bear it no longer."
+    },
+    "audio": {
+      "model_a": "A/237-126133-0003.wav",
+      "model_b": "B/237-126133-0003.wav",
+      "reference": "ref/237-126133-0021.flac"
+    }
+  },
+  {
+    "id": "2961-961-0001",
+    "metrics": {
+      "diff": 0.7489,
+      "utmos_a": 3.5904,
+      "utmos_b": 2.8415
+    },
+    "transcript": {
+      "ref_text": "Some poems of Solon were recited by the boys.",
+      "gen_text": "And now he desires to see the ideal State set in motion; he would like to know how she behaved in some great struggle."
+    },
+    "audio": {
+      "model_a": "A/2961-961-0001.wav",
+      "model_b": "B/2961-961-0001.wav",
+      "reference": "ref/2961-961-0005.flac"
+    }
+  },
+  {
+    "id": "1580-141084-0016",
+    "metrics": {
+      "diff": 0.7111,
+      "utmos_a": 4.0162,
+      "utmos_b": 3.3051
+    },
+    "transcript": {
+      "ref_text": "Suddenly he heard him at the very door. There was no possible escape.",
+      "gen_text": "My friend did not appear to be depressed by his failure, but shrugged his shoulders in half humorous resignation."
+    },
+    "audio": {
+      "model_a": "A/1580-141084-0016.wav",
+      "model_b": "B/1580-141084-0016.wav",
+      "reference": "ref/1580-141084-0045.flac"
+    }
+  },
+  {
+    "id": "5683-32879-0009",
+    "metrics": {
+      "diff": 0.7104,
+      "utmos_a": 3.5779,
+      "utmos_b": 2.8675
+    },
+    "transcript": {
+      "ref_text": "You have been so ill, my poor Rachel.",
+      "gen_text": "Ill and troubled, dear - troubled in mind, and miserably nervous."
+    },
+    "audio": {
+      "model_a": "A/5683-32879-0009.wav",
+      "model_b": "B/5683-32879-0009.wav",
+      "reference": "ref/5683-32879-0008.flac"
+    }
+  },
+  {
+    "id": "7127-75946-0024",
+    "metrics": {
+      "diff": 0.7015,
+      "utmos_a": 4.3174,
+      "utmos_b": 3.6159
+    },
+    "transcript": {
+      "ref_text": "Do you think so\"? she replied with indifference.",
+      "gen_text": "Monsieur was the only one who did not understand anything about the matter."
+    },
+    "audio": {
+      "model_a": "A/7127-75946-0024.wav",
+      "model_b": "B/7127-75946-0024.wav",
+      "reference": "ref/7127-75947-0002.flac"
+    }
+  },
+  {
+    "id": "6930-76324-0027",
+    "metrics": {
+      "diff": 0.6844,
+      "utmos_a": 3.9367,
+      "utmos_b": 3.2522
+    },
+    "transcript": {
+      "ref_text": "Voltaire picked up something from the ground and looked at it.",
+      "gen_text": "Forgetting all their weariness, they seized their candles and scurried through the house, finding an occasional paper tucked away in some odd corner."
+    },
+    "audio": {
+      "model_a": "A/6930-76324-0027.wav",
+      "model_b": "B/6930-76324-0027.wav",
+      "reference": "ref/6930-81414-0019.flac"
+    }
+  },
+  {
+    "id": "7021-79730-0005",
+    "metrics": {
+      "diff": 0.6775,
+      "utmos_a": 4.2675,
+      "utmos_b": 3.5899
+    },
+    "transcript": {
+      "ref_text": "said she, pointing to the playthings; \"see!",
+      "gen_text": "So you will be a good girl, I know, and not make any trouble, but will stay at home contentedly - won't you?"
+    },
+    "audio": {
+      "model_a": "A/7021-79730-0005.wav",
+      "model_b": "B/7021-79730-0005.wav",
+      "reference": "ref/7021-79740-0012.flac"
+    }
+  }
+]
