@@ -99,16 +99,16 @@ docker container run --rm -it --gpus=all --mount 'type=volume,source=f5-tts,targ
 
 ## Replicating Experiments
 
-We provide scripts to replicate our MRM search experiments. Detailed instructions are available in the [MRM Experiments README](mrm_experiments/README_mrm_experiment.md).
+We provide scripts to replicate our MRM search experiments. Detailed instructions are available in the [MRM Experiments README](paper_experiments/README_mrm_experiment.md).
 
 Quick start to replicate experiments:
 1. **Fixed t2, move t1**:
 ```bash
-bash mrm_experiments/run_mrm_fixed_t2_fanout.sh
+bash paper_experiments/run_mrm_fixed_t2_fanout.sh
 ```
 2. **Fixed t1, move t2**:
 ```bash
-bash mrm_experiments/run_mrm_fixed_t1_fanout.sh
+bash paper_experiments/run_mrm_fixed_t1_fanout.sh
 ```
 
 

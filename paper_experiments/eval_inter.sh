@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # Function to run all three test types for a given seed in parallel
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$ROOT_DIR"
 run_seed_parallel() {
     local seed=$1
 

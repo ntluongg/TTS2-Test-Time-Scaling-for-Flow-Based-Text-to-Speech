@@ -3,7 +3,7 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-SCRIPT_DIR="$ROOT_DIR/mrm_experiments"
+SCRIPT_DIR="$ROOT_DIR/paper_experiments"
 LOG_DIR="${LOG_DIR:-$SCRIPT_DIR/logs_fixed_t2}"
 mkdir -p "$LOG_DIR"
 
@@ -13,14 +13,14 @@ TESTSET="${TESTSET:-seedtts_test_zh}"
 NFE_STEP="${NFE_STEP:-32}"
 SEARCH_N="${SEARCH_N:-8}"
 SEEDS="${SEEDS:-2 3}"
-MAX_UTTERANCES="${MAX_UTTERANCES:-50}"
+MAX_UTTERANCES="${MAX_UTTERANCES:-1}"
 RESULTS_TAG="${RESULTS_TAG:-fixed_t2_fanout}"
 
 EXPERIMENT_GPU="${EXPERIMENT_GPU:-0}"
-REWARD_GPU="${REWARD_GPU:-1}"
+REWARD_GPU="${REWARD_GPU:-0}"
 REWARD_BASE_PORT="${REWARD_BASE_PORT:-8000}"
-REWARD_INSTANCES="${REWARD_INSTANCES:-4}"
-EXPERIMENT_WORKERS="${EXPERIMENT_WORKERS:-4}"
+REWARD_INSTANCES="${REWARD_INSTANCES:-1}"
+EXPERIMENT_WORKERS="${EXPERIMENT_WORKERS:-1}"
 
 FIX_T2="${FIX_T2:-0.8}"
 SWEEP_T1_VALUES="${SWEEP_T1_VALUES:-0.20 0.35 0.50 0.65}"
@@ -62,7 +62,7 @@ start_reward_server() {
     echo "Starting reward server ${index} on GPU ${REWARD_GPU}, port ${port}"
     CUDA_VISIBLE_DEVICES="$REWARD_GPU" \
     REWARD_DEVICE="cuda" \
-    python -m uvicorn mrm_experiments.reward:app --host 127.0.0.1 --port "$port" \
+    python -m uvicorn paper_experiments.reward:app --host 127.0.0.1 --port "$port" \
         >"$log_file" 2>&1 &
 
     local pid=$!

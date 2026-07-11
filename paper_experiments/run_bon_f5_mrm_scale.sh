@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-cd /home/voice/data/voice-models/F5-TTS
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$ROOT_DIR"
 
 EXP_NAME="${EXP_NAME:-F5TTS_v1_Base}"
 CKPT_STEP="${CKPT_STEP:-1250000}"
 TESTSET="${TESTSET:-ls_pc_test_clean}"
-MAX_UTTERANCES="${MAX_UTTERANCES:-10000}"
+MAX_UTTERANCES="${MAX_UTTERANCES:-1}"
 SEEDS_STR="${SEEDS:-42}"
 
 T1="${T1:-0.5}"
