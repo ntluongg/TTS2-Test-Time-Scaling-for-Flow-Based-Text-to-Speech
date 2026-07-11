@@ -1,14 +1,61 @@
-# TTS2: Test-Time Scaling for Flow-Based Text-to-Speech via Multi-stage Reward Modeling on Sub-Terminal Representations
+# TTS2: Test-Time Scaling for Flow-Based Text-to-Speech via Multi-stage Reward Modeling on Posterior Mean Projections
 
-## 🌟 Demo for Reviewers
+## 📑 Table of Contents
+- [Response to Reviewer X4Ah](#response-to-reviewer-x4ah)
+- [🌟 Demo for Reviewers](#-demo-for-reviewers)
+  - [Abstract](#abstract)
+  - [Model Overview](#model-overview)
+  - [Zero-Shot Generation](#zero-shot-generation)
+- [Installation](#installation)
+- [Evaluation](#evaluation)
+- [Single Sample Inference](#single-sample-inference-mrm-method)
+- [Replicating Experiments](#replicating-experiments)
+- [Acknowledgements](#acknowledgements)
+- [Citation](#citation)
+- [License](#license)
 
-To view the audio generation results and comparisons, please follow the instructions in [demo/README.md](demo/README.md).
-
-### Response to Reviewer X4Ah
+## Response to Reviewer X4Ah
 
 > **W2: Sequential convergence only verified on large-scale models. Untested on smaller/structurally different models like Matcha-TTS.**
 
 To address this, we have applied TTS^2 to Matcha-TTS and verified that the three-stage convergence pattern reproduces on this structurally different model. Detailed convergence analysis and plots addressing this concern can be found in the [`rebuttal`](rebuttal/) folder.
+
+## 🌟 Demo for Reviewers
+
+*(If you prefer a standalone web interface, you can still follow the instructions in [demo/README.md](demo/README.md) to run the interactive web demo).*
+
+### Abstract
+While training-time scaling has revolutionized generative models, inference-time compute scaling remains largely unexplored in speech synthesis. In this work, we investigate methods to effectively utilize computation during inference to improve the performance of non-autoregressive Text-to-Speech (TTS) systems, specifically those based on Conditional Flow Matching (CFM). By analyzing CFM synthesis behavior, we identify distinct performance plateaus during the denoising process. To overcome these limitations, we propose TTS<sup>2</sup> - a multi-stage, test-time compute framework that optimizes TTS quality. By combining Ordinary Differential Equation (ODE) and Stochastic Differential Equation (SDE) generation dynamics with stochastic search and specialized verifiers, our approach enables guided trajectory optimization for timbre consistency, content accuracy, and audio fidelity. To the best of our knowledge, this work is the first to formalize and study test-time scaling for non-autoregressive speech synthesis.
+
+### Model Overview
+<p align="center">
+  <img src="demo/TTS2_method.png" alt="Overview of TTS2" width="100%">
+</p>
+<p align="center">
+  <em>Overview of TTS<sup>2</sup> (ours). Compute is aligned across the flow via a branching SDE search space. Trajectories begin with an unguided warm-up, refine speaker features through an SMC search, and converge using an ODE Best-of-N selection to finalize acoustic details.</em>
+</p>
+
+### Zero-Shot Generation
+
+Compare the generated audio between F5-TTS and TTS<sup>2</sup> (ours) using the reference prompt. Both models are evaluated at NFE = 256.
+
+| Reference & Gen Text | Reference Audio | F5-TTS | TTS<sup>2</sup> (ours) |
+| :--- | :---: | :---: | :---: |
+| **Ref:** You have been so ill, my poor Rachel.<br>**Gen:** Ill and troubled, dear - troubled in mind, and miserably nervous. | <audio controls><source src="demo/audio/ref/5683-32879-0008.flac" type="audio/flac"></audio> | <audio controls><source src="demo/audio/F5-TTS/5683-32879-0009.wav" type="audio/wav"></audio> | <audio controls><source src="demo/audio/TTS2/5683-32879-0009.wav" type="audio/wav"></audio> |
+| **Ref:** No, my little son," she said.<br>**Gen:** That is a very fine cap you have," he said. | <audio controls><source src="demo/audio/ref/7021-85628-0026.flac" type="audio/flac"></audio> | <audio controls><source src="demo/audio/F5-TTS/7021-85628-0016.wav" type="audio/wav"></audio> | <audio controls><source src="demo/audio/TTS2/7021-85628-0016.wav" type="audio/wav"></audio> |
+| **Ref:** Bracton's a very good fellow, I can assure you.<br>**Gen:** A cold, bright moon was shining with clear sharp lights and shadows. | <audio controls><source src="demo/audio/ref/5683-32866-0008.flac" type="audio/flac"></audio> | <audio controls><source src="demo/audio/F5-TTS/5683-32866-0027.wav" type="audio/wav"></audio> | <audio controls><source src="demo/audio/TTS2/5683-32866-0027.wav" type="audio/wav"></audio> |
+| **Ref:** May you drink heart's ease from it for many years.<br>**Gen:** Yes. And with all your fingers it took you a year to catch me'. "The king frowned more angrily. | <audio controls><source src="demo/audio/ref/5142-33396-0050.flac" type="audio/flac"></audio> | <audio controls><source src="demo/audio/F5-TTS/5142-33396-0059.wav" type="audio/wav"></audio> | <audio controls><source src="demo/audio/TTS2/5142-33396-0059.wav" type="audio/wav"></audio> |
+| **Ref:** Holmes held it out on his open palm in the glare of the electric light.<br>**Gen:** Well, well, don't trouble to answer. Listen, and see that I do you no injustice. | <audio controls><source src="demo/audio/ref/1580-141083-0036.flac" type="audio/flac"></audio> | <audio controls><source src="demo/audio/F5-TTS/1580-141084-0034.wav" type="audio/wav"></audio> | <audio controls><source src="demo/audio/TTS2/1580-141084-0034.wav" type="audio/wav"></audio> |
+| **Ref:** Straightway the hawk glided from his perch and darted after him.<br>**Gen:** Once fairly a wing, however, he wheeled and made back hurriedly for his perch. | <audio controls><source src="demo/audio/ref/7176-88083-0016.flac" type="audio/flac"></audio> | <audio controls><source src="demo/audio/F5-TTS/7176-88083-0005.wav" type="audio/wav"></audio> | <audio controls><source src="demo/audio/TTS2/7176-88083-0005.wav" type="audio/wav"></audio> |
+| **Ref:** And mine is Will Stuteley. Shall we be comrades"?<br>**Gen:** As any in England, I would say," said Gamewell, proudly. "That is, in his day. | <audio controls><source src="demo/audio/ref/61-70968-0039.flac" type="audio/flac"></audio> | <audio controls><source src="demo/audio/F5-TTS/61-70970-0011.wav" type="audio/wav"></audio> | <audio controls><source src="demo/audio/TTS2/61-70970-0011.wav" type="audio/wav"></audio> |
+| **Ref:** Some poems of Solon were recited by the boys.<br>**Gen:** Many laws exist among us which are the counterpart of yours as they were in the olden time. | <audio controls><source src="demo/audio/ref/2961-961-0005.flac" type="audio/flac"></audio> | <audio controls><source src="demo/audio/F5-TTS/2961-961-0015.wav" type="audio/wav"></audio> | <audio controls><source src="demo/audio/TTS2/2961-961-0015.wav" type="audio/wav"></audio> |
+| **Ref:** Is there not a meridian everywhere"?<br>**Gen:** But how did she manage to render it so fashionable"? | <audio controls><source src="demo/audio/ref/3729-6852-0025.flac" type="audio/flac"></audio> | <audio controls><source src="demo/audio/F5-TTS/3729-6852-0031.wav" type="audio/wav"></audio> | <audio controls><source src="demo/audio/TTS2/3729-6852-0031.wav" type="audio/wav"></audio> |
+| **Ref:** And you belong to that small class who are happy!<br>**Gen:** This without reckoning in the pains of the heart. And so it goes on. | <audio controls><source src="demo/audio/ref/4507-16021-0050.flac" type="audio/flac"></audio> | <audio controls><source src="demo/audio/F5-TTS/4507-16021-0048.wav" type="audio/wav"></audio> | <audio controls><source src="demo/audio/TTS2/4507-16021-0048.wav" type="audio/wav"></audio> |
+| **Ref:** Steam up and canvas spread, the schooner started eastwards.<br>**Gen:** Doubts now arose, and some discussion followed, whether or not it was desirable for Ben Zoof to accompany his master. | <audio controls><source src="demo/audio/ref/5105-28241-0003.flac" type="audio/flac"></audio> | <audio controls><source src="demo/audio/F5-TTS/5105-28240-0024.wav" type="audio/wav"></audio> | <audio controls><source src="demo/audio/TTS2/5105-28240-0024.wav" type="audio/wav"></audio> |
+| **Ref:** One hardly likes to throw suspicion where there are no proofs".<br>**Gen:** Come, come," said Holmes, kindly, "it is human to err, and at least no one can accuse you of being a callous criminal. | <audio controls><source src="demo/audio/ref/1580-141083-0040.flac" type="audio/flac"></audio> | <audio controls><source src="demo/audio/F5-TTS/1580-141084-0033.wav" type="audio/wav"></audio> | <audio controls><source src="demo/audio/TTS2/1580-141084-0033.wav" type="audio/wav"></audio> |
+| **Ref:** We had meters in which there were two bottles of liquid.<br>**Gen:** But the plant ran, and it was the first three wire station in this country". | <audio controls><source src="demo/audio/ref/2300-131720-0041.flac" type="audio/flac"></audio> | <audio controls><source src="demo/audio/F5-TTS/2300-131720-0024.wav" type="audio/wav"></audio> | <audio controls><source src="demo/audio/TTS2/2300-131720-0024.wav" type="audio/wav"></audio> |
+| **Ref:** All the furniture belonged to other times.<br>**Gen:** It is an antipathy - an antipathy I cannot get over, dear Dorcas; you may think it a madness, but don't blame me. | <audio controls><source src="demo/audio/ref/5683-32866-0023.flac" type="audio/flac"></audio> | <audio controls><source src="demo/audio/F5-TTS/5683-32879-0018.wav" type="audio/wav"></audio> | <audio controls><source src="demo/audio/TTS2/5683-32879-0018.wav" type="audio/wav"></audio> |
+| **Ref:** she asked impulsively, "I didn't believe you could persuade her, father".<br>**Gen:** Somehow, of all the days when the home feeling was the strongest, this day it seemed as if she could bear it no longer. | <audio controls><source src="demo/audio/ref/237-126133-0021.flac" type="audio/flac"></audio> | <audio controls><source src="demo/audio/F5-TTS/237-126133-0003.wav" type="audio/wav"></audio> | <audio controls><source src="demo/audio/TTS2/237-126133-0003.wav" type="audio/wav"></audio> |
 
 ## Installation
 
