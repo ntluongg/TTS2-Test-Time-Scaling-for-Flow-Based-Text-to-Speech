@@ -11,8 +11,8 @@
       "gen_text": "Ill and troubled, dear - troubled in mind, and miserably nervous."
     },
     "audio": {
-      "model_a": "A/5683-32879-0009.wav",
-      "model_b": "B/5683-32879-0009.wav",
+      "model_a": "TTS2/5683-32879-0009.wav",
+      "model_b": "F5-TTS/5683-32879-0009.wav",
       "reference": "ref/5683-32879-0008.flac"
     }
   },
@@ -28,8 +28,8 @@
       "gen_text": "That is a very fine cap you have,\" he said."
     },
     "audio": {
-      "model_a": "A/7021-85628-0016.wav",
-      "model_b": "B/7021-85628-0016.wav",
+      "model_a": "TTS2/7021-85628-0016.wav",
+      "model_b": "F5-TTS/7021-85628-0016.wav",
       "reference": "ref/7021-85628-0026.flac"
     }
   },
@@ -45,8 +45,8 @@
       "gen_text": "A cold, bright moon was shining with clear sharp lights and shadows."
     },
     "audio": {
-      "model_a": "A/5683-32866-0027.wav",
-      "model_b": "B/5683-32866-0027.wav",
+      "model_a": "TTS2/5683-32866-0027.wav",
+      "model_b": "F5-TTS/5683-32866-0027.wav",
       "reference": "ref/5683-32866-0008.flac"
     }
   },
@@ -62,8 +62,8 @@
       "gen_text": "Yes. And with all your fingers it took you a year to catch me'. \"The king frowned more angrily."
     },
     "audio": {
-      "model_a": "A/5142-33396-0059.wav",
-      "model_b": "B/5142-33396-0059.wav",
+      "model_a": "TTS2/5142-33396-0059.wav",
+      "model_b": "F5-TTS/5142-33396-0059.wav",
       "reference": "ref/5142-33396-0050.flac"
     }
   },
@@ -79,8 +79,8 @@
       "gen_text": "Well, well, don't trouble to answer. Listen, and see that I do you no injustice."
     },
     "audio": {
-      "model_a": "A/1580-141084-0034.wav",
-      "model_b": "B/1580-141084-0034.wav",
+      "model_a": "TTS2/1580-141084-0034.wav",
+      "model_b": "F5-TTS/1580-141084-0034.wav",
       "reference": "ref/1580-141083-0036.flac"
     }
   },
@@ -96,8 +96,8 @@
       "gen_text": "Once fairly a wing, however, he wheeled and made back hurriedly for his perch."
     },
     "audio": {
-      "model_a": "A/7176-88083-0005.wav",
-      "model_b": "B/7176-88083-0005.wav",
+      "model_a": "TTS2/7176-88083-0005.wav",
+      "model_b": "F5-TTS/7176-88083-0005.wav",
       "reference": "ref/7176-88083-0016.flac"
     }
   },
@@ -113,8 +113,8 @@
       "gen_text": "As any in England, I would say,\" said Gamewell, proudly. \"That is, in his day."
     },
     "audio": {
-      "model_a": "A/61-70970-0011.wav",
-      "model_b": "B/61-70970-0011.wav",
+      "model_a": "TTS2/61-70970-0011.wav",
+      "model_b": "F5-TTS/61-70970-0011.wav",
       "reference": "ref/61-70968-0039.flac"
     }
   },
@@ -130,8 +130,8 @@
       "gen_text": "Many laws exist among us which are the counterpart of yours as they were in the olden time."
     },
     "audio": {
-      "model_a": "A/2961-961-0015.wav",
-      "model_b": "B/2961-961-0015.wav",
+      "model_a": "TTS2/2961-961-0015.wav",
+      "model_b": "F5-TTS/2961-961-0015.wav",
       "reference": "ref/2961-961-0005.flac"
     }
   },
@@ -147,8 +147,8 @@
       "gen_text": "But how did she manage to render it so fashionable\"?"
     },
     "audio": {
-      "model_a": "A/3729-6852-0031.wav",
-      "model_b": "B/3729-6852-0031.wav",
+      "model_a": "TTS2/3729-6852-0031.wav",
+      "model_b": "F5-TTS/3729-6852-0031.wav",
       "reference": "ref/3729-6852-0025.flac"
     }
   },
@@ -164,8 +164,8 @@
       "gen_text": "This without reckoning in the pains of the heart. And so it goes on."
     },
     "audio": {
-      "model_a": "A/4507-16021-0048.wav",
-      "model_b": "B/4507-16021-0048.wav",
+      "model_a": "TTS2/4507-16021-0048.wav",
+      "model_b": "F5-TTS/4507-16021-0048.wav",
       "reference": "ref/4507-16021-0050.flac"
     }
   },
@@ -181,8 +181,8 @@
       "gen_text": "Doubts now arose, and some discussion followed, whether or not it was desirable for Ben Zoof to accompany his master."
     },
     "audio": {
-      "model_a": "A/5105-28240-0024.wav",
-      "model_b": "B/5105-28240-0024.wav",
+      "model_a": "TTS2/5105-28240-0024.wav",
+      "model_b": "F5-TTS/5105-28240-0024.wav",
       "reference": "ref/5105-28241-0003.flac"
     }
   },
@@ -198,8 +198,8 @@
       "gen_text": "Come, come,\" said Holmes, kindly, \"it is human to err, and at least no one can accuse you of being a callous criminal."
     },
     "audio": {
-      "model_a": "A/1580-141084-0033.wav",
-      "model_b": "B/1580-141084-0033.wav",
+      "model_a": "TTS2/1580-141084-0033.wav",
+      "model_b": "F5-TTS/1580-141084-0033.wav",
       "reference": "ref/1580-141083-0040.flac"
     }
   },
@@ -215,8 +215,8 @@
       "gen_text": "But the plant ran, and it was the first three wire station in this country\"."
     },
     "audio": {
-      "model_a": "A/2300-131720-0024.wav",
-      "model_b": "B/2300-131720-0024.wav",
+      "model_a": "TTS2/2300-131720-0024.wav",
+      "model_b": "F5-TTS/2300-131720-0024.wav",
       "reference": "ref/2300-131720-0041.flac"
     }
   },
@@ -232,8 +232,8 @@
       "gen_text": "It is an antipathy - an antipathy I cannot get over, dear Dorcas; you may think it a madness, but don't blame me."
     },
     "audio": {
-      "model_a": "A/5683-32879-0018.wav",
-      "model_b": "B/5683-32879-0018.wav",
+      "model_a": "TTS2/5683-32879-0018.wav",
+      "model_b": "F5-TTS/5683-32879-0018.wav",
       "reference": "ref/5683-32866-0023.flac"
     }
   },
@@ -249,8 +249,8 @@
       "gen_text": "Somehow, of all the days when the home feeling was the strongest, this day it seemed as if she could bear it no longer."
     },
     "audio": {
-      "model_a": "A/237-126133-0003.wav",
-      "model_b": "B/237-126133-0003.wav",
+      "model_a": "TTS2/237-126133-0003.wav",
+      "model_b": "F5-TTS/237-126133-0003.wav",
       "reference": "ref/237-126133-0021.flac"
     }
   }
