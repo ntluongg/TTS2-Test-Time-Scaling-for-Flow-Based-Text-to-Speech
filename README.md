@@ -97,19 +97,28 @@ docker container run --rm -it --gpus=all --mount 'type=volume,source=f5-tts,targ
 
 ## [Evaluation](src/f5_tts/eval)
 
+## Single Sample Inference (MRM Method)
+
+To quickly test our MRM search method on a single sample, you need to run the reward server and the inference script:
+
+1. **Start the reward server (in terminal 1)**:
+```bash
+CUDA_VISIBLE_DEVICES=0 REWARD_DEVICE=cuda python -m uvicorn paper_experiments.reward:app --host 127.0.0.1 --port 8000
+```
+
+2. **Run inference for one sample (in terminal 2)**:
+```bash
+CUDA_VISIBLE_DEVICES=0 python paper_experiments/eval_infer_batch_mrm_search.py \
+  -s 2 -n F5TTS_v1_Base -c 1250000 -t seedtts_test_zh -nfe 32 \
+  --search-type mrm --search-n 8 --mrm-t1 0.35 --mrm-t2 0.8 \
+  --reward-url http://127.0.0.1:8000/infer \
+  --max-utterances 1 \
+  --results-tag demo_mrm
+```
+
 ## Replicating Experiments
 
-We provide scripts to replicate our MRM search experiments. Detailed instructions are available in the [MRM Experiments README](paper_experiments/README_mrm_experiment.md).
-
-Quick start to replicate experiments:
-1. **Fixed t2, move t1**:
-```bash
-bash paper_experiments/run_mrm_fixed_t2_fanout.sh
-```
-2. **Fixed t1, move t2**:
-```bash
-bash paper_experiments/run_mrm_fixed_t1_fanout.sh
-```
+For full experiment sweeps (fixed t1/t2), baseline comparisons, and other evaluation details, please refer to the [Paper Experiments README](paper_experiments/README_mrm_experiment.md).
 
 
 
