@@ -4,6 +4,12 @@
 
 To view the audio generation results and comparisons, please follow the instructions in [demo/README.md](demo/README.md).
 
+### Response to Reviewer X4Ah
+
+> **W2: Sequential convergence only verified on large-scale models. Untested on smaller/structurally different models like Matcha-TTS.**
+
+To address this, we have applied TTS^2 to Matcha-TTS and verified that the three-stage convergence pattern reproduces on this structurally different model. Detailed convergence analysis and plots addressing this concern can be found in the [`rebuttal`](rebuttal/) folder.
+
 ## Installation
 
 ### Create a separate environment if needed
